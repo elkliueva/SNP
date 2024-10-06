@@ -18,12 +18,12 @@ class Dessert():
 
     @calories.setter
     def calories(self, value):
+        if value is not None and not isinstance(value, (int, float)):
+            raise ValueError("Calories must be a number or None")
         self._calories = value
 
     def is_healthy(self):
-        if self.calories < 200:
-            return True
-        return False
+        return self.calories is not None and self.calories < 200
     
     def is_delicious(self):
         return True
